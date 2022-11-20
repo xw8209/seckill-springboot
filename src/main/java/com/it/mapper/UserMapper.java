@@ -2,6 +2,7 @@ package com.it.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.it.pojo.User;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.it.pojo.User;
  * @author jobob
  * @since 2022-11-19
  */
+@Mapper
 public interface UserMapper extends BaseMapper<User> {
 
 }
