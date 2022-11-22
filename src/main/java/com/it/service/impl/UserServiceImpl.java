@@ -1,17 +1,22 @@
 package com.it.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.it.exception.GlobalException;
 import com.it.mapper.UserMapper;
 import com.it.pojo.User;
 import com.it.service.IUserService;
+import com.it.utils.CookieUtil;
 import com.it.utils.MD5Util;
-import com.it.utils.ValidatorUtil;
+import com.it.utils.UUIDUtil;
 import com.it.vo.LoginVo;
 import com.it.vo.RespBean;
 import com.it.vo.RespBeanEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -23,15 +28,18 @@ import org.springframework.util.StringUtils;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
-    @Autowired
+    @Resource
     private UserMapper userMapper;
     /**
      * 登录
+     *
      * @param loginVo
+     * @param request
+     * @param response
      * @return
      */
     @Override
-    public RespBean doLogin(LoginVo loginVo) {
+    public RespBean doLogin(LoginVo loginVo, HttpServletRequest request, HttpServletResponse response) {
         String mobile = loginVo.getMobile();
         String password = loginVo.getPassword();
 //        //参数校验
@@ -41,14 +49,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 //        if(!ValidatorUtil.isMobile(mobile)) {
 //            return RespBean.error(RespBeanEnum.MOBILE_ERROR);
 //        }
+        //根据手机号获取用户
         User user = userMapper.selectById(mobile);
         if(user == null) {
-            return RespBean.error(RespBeanEnum.LOGIN_USERNAME_ERROR);
+            throw new GlobalException(RespBeanEnum.LOGIN_ERROR);
         }
+        // 判断密码是否正确
         if(!MD5Util.formPassToDBPass(password,user.getSlat()).equals(user.getPasword()))
         {
-            return RespBean.error(RespBeanEnum.LOGIN_ERROR);
+            throw new GlobalException(RespBeanEnum.LOGIN_ERROR);
         }
+        // 生成cookie
+        String ticket = UUIDUtil.uuid();
+        request.getSession().setAttribute(ticket,user);
+        CookieUtil.setCookie(request,response,"userTicket",ticket);
         return RespBean.success(RespBeanEnum.SUCCESS);
     }
 }
