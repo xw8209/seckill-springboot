@@ -3,6 +3,25 @@ spring:
   thymeleaf:
     #????
     cache: false
+
+#redis配置
+  redis:
+    #服务器地址
+    host: 192.168.190.128
+    #默认数据库
+    database: 0
+    #连接超时
+    connect-timeout: 10000ms
+    lettuce:
+      pool:
+        #最大连接数
+        max-active: 8
+        #最大阻塞等待时间
+        max-wait: 10000ms
+        #最大空闲时间
+        max-idle: 200
+        #最小空闲时间
+        min-idle: 5
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/seckill?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true
