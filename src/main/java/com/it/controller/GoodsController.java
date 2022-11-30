@@ -1,6 +1,7 @@
 package com.it.controller;
 
 import com.it.pojo.User;
+import com.it.service.IGoodsService;
 import com.it.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,16 +19,26 @@ import javax.servlet.http.HttpSession;
 public class GoodsController {
 @Autowired
 private IUserService userService;
+@Autowired
+private IGoodsService goodsService;
     @RequestMapping("/toList")
-    public String toList(HttpServletRequest request, HttpServletResponse response, Model model, @CookieValue("userTicket") String ticket){
-        if(StringUtils.isEmpty(ticket)){
-            return "login";
-        }
-        //User user = (User)session.getAttribute(ticket);
-        User user = userService.getUserByCookie(ticket, request, response);
+    public String toList(Model model, User user){
         if(user == null){
             return "login";
         }
+        model.addAttribute("user",user);
+        model.addAttribute("goodsList",goodsService.findGoodVo());
+        return "goodsList";
+    }
+
+    /**
+     * 跳转到商品列表页面
+     * @param model
+     * @param user
+     * @return
+     */
+    @RequestMapping("/toDetail")
+    public String toDetail(Model model, User user){
         model.addAttribute("user",user);
         return "goodsList";
     }
