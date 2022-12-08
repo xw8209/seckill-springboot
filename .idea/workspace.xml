@@ -4,35 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eb72f23-82c6-4a33-88f5-97d7d741afd9" name="变更" comment="1.配置了redis&#10;2.将用户信息存进了redis,取代了session">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/config/UserArgumentResolve.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/OrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/SeckillGoodsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/SeckillOrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/mapper/GoodsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/mapper/OrderMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/mapper/SeckillGoodsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/mapper/SeckillOrderMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/pojo/Goods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/pojo/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/pojo/SeckillGoods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/pojo/SeckillOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/service/IGoodsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/service/IOrderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/service/ISeckillGoodsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/service/ISeckillOrderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/GoodsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/SeckillGoodsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/SeckillOrderServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/vo/GoodsVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/GoodsMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/SeckillGoodsMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/SeckillOrderMapper.xml" afterDir="false" />
+    <list default="true" id="7eb72f23-82c6-4a33-88f5-97d7d741afd9" name="变更" comment="1.增加了商品和秒杀商品相关东西&#10;2.增加了查找商品列表&#10;3.添加了自定义用户参数判断工具类，将controller中的判断移除">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/IPHONE14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/IPHONE14PRO.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/mapper/GoodsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/mapper/GoodsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/IGoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/IGoodsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/impl/GoodsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/GoodsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/GoodsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/GoodsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/iphone12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/iphone12pro.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +63,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/code/JAVA_code/springboot/seckill-springboot/src/main/resources/mapper",
+    "last_opened_file_path": "E:/code/JAVA_code/springboot/seckill-springboot/src/main/resources/static/img",
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
@@ -97,6 +79,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\code\JAVA_code\springboot\seckill-springboot\src\main\resources\static\img" />
       <recent name="E:\code\JAVA_code\springboot\seckill-springboot\src\main\resources\mapper" />
       <recent name="E:\code\JAVA_code\springboot\seckill-springboot\src\main\java\com\it" />
       <recent name="E:\code\JAVA_code\springboot\seckill-springboot\src\main\java\com\it\utils" />
@@ -154,7 +137,8 @@
       <workItem from="1669297683188" duration="1217000" />
       <workItem from="1669381219303" duration="4096000" />
       <workItem from="1669645067403" duration="2745000" />
-      <workItem from="1669811585066" duration="5720000" />
+      <workItem from="1669811585066" duration="5957000" />
+      <workItem from="1670507531560" duration="2132000" />
     </task>
     <task id="LOCAL-00001" summary="增加2次MD5加密">
       <created>1668785840807</created>
@@ -198,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669390125019</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="1.增加了商品和秒杀商品相关东西&#10;2.增加了查找商品列表&#10;3.添加了自定义用户参数判断工具类，将controller中的判断移除">
+      <created>1669818831025</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669818831026</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +214,7 @@
     <MESSAGE value="1.添加了校验依赖去除了service中的校验规则&#10;2.自定义了一个手机号校验注解@IsMobile" />
     <MESSAGE value="1.完善登录功能，和添加cookie和session处理&#10;2.添加了异常处理类，" />
     <MESSAGE value="1.配置了redis&#10;2.将用户信息存进了redis,取代了session" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.配置了redis&#10;2.将用户信息存进了redis,取代了session" />
+    <MESSAGE value="1.增加了商品和秒杀商品相关东西&#10;2.增加了查找商品列表&#10;3.添加了自定义用户参数判断工具类，将controller中的判断移除" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.增加了商品和秒杀商品相关东西&#10;2.增加了查找商品列表&#10;3.添加了自定义用户参数判断工具类，将controller中的判断移除" />
   </component>
 </project>

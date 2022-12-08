@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,9 +38,10 @@ private IGoodsService goodsService;
      * @param user
      * @return
      */
-    @RequestMapping("/toDetail")
-    public String toDetail(Model model, User user){
+    @RequestMapping("/toDetail/{goodsId}")
+    public String toDetail(Model model, User user, @PathVariable Long GoodsId){
         model.addAttribute("user",user);
-        return "goodsList";
+        model.addAttribute("goods",goodsService.findGoodVoByGoodsId(GoodsId));
+        return "goodsDetail";
     }
 }

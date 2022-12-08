@@ -20,4 +20,6 @@ public interface IGoodsService extends IService<Goods> {
      * @return
      */
     List<GoodsVo> findGoodVo();
+
+    GoodsVo findGoodVoByGoodsId(Long goodsId);
 }
