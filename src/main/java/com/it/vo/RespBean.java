@@ -34,10 +34,10 @@ public class RespBean {
      */
     //为什么传枚举,因为有各种各样的失败
     public static RespBean error(RespBeanEnum respBeanEnum){
-        return new RespBean(respBeanEnum.ERROR.getCode(),respBeanEnum.getMessage(),null);
+        return new RespBean(respBeanEnum.getCode(),respBeanEnum.getMessage(),null);
     }
 
     public static RespBean error(RespBeanEnum respBeanEnum,Object obj){
-        return new RespBean(respBeanEnum.ERROR.getCode(),respBeanEnum.getMessage(),obj);
+        return new RespBean(respBeanEnum.getCode(),respBeanEnum.getMessage(),obj);
     }
 }

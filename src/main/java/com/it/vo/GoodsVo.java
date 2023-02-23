@@ -15,6 +15,6 @@ import java.util.Date;
 public class GoodsVo extends Goods {
     private BigDecimal seckillPrice;
     private Integer stockCount;
-    private Date starDate;
+    private Date startDate;
     private Date endDate;
 }

@@ -32,9 +32,9 @@ public class User implements Serializable {
     /**
      * MD5二次加密
      */
-    private String pasword;
+    private String password;
 
-    private String slat;
+    private String salt;
 
     /**
      * 头像
