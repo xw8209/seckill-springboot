@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eb72f23-82c6-4a33-88f5-97d7d741afd9" name="变更" comment="1.添加商品详情中根据id查找商品详情">
+    <list default="true" id="7eb72f23-82c6-4a33-88f5-97d7d741afd9" name="变更" comment="1.修改了user类中字段名错误的bug&#10;2.新增商品详情页面的秒杀功能实现&#10;3.后台增加了秒杀时间、状态的判断">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/SecKillController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/GoodsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/vo/GoodsVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/vo/GoodsVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/vo/RespBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/vo/RespBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/GoodsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/GoodsMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/goodsDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/goodsDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/goodsList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/goodsList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/IOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/vo/RespBeanEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/vo/RespBeanEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secKillFail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/seckillFail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +22,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="AnnotationType" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -143,7 +140,9 @@
       <workItem from="1669645067403" duration="2745000" />
       <workItem from="1669811585066" duration="5957000" />
       <workItem from="1670507531560" duration="2132000" />
-      <workItem from="1677152575646" duration="6567000" />
+      <workItem from="1677152575646" duration="7987000" />
+      <workItem from="1677243025935" duration="5242000" />
+      <workItem from="1677499272430" duration="4192000" />
     </task>
     <task id="LOCAL-00001" summary="增加2次MD5加密">
       <created>1668785840807</created>
@@ -194,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669818831026</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1.修改了user类中字段名错误的bug&#10;2.新增商品详情页面的秒杀功能实现&#10;3.后台增加了秒杀时间、状态的判断">
+      <created>1677160327327</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1677160327327</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +226,7 @@
     <MESSAGE value="1.完善登录功能，和添加cookie和session处理&#10;2.添加了异常处理类，" />
     <MESSAGE value="1.配置了redis&#10;2.将用户信息存进了redis,取代了session" />
     <MESSAGE value="1.增加了商品和秒杀商品相关东西&#10;2.增加了查找商品列表&#10;3.添加了自定义用户参数判断工具类，将controller中的判断移除" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.增加了商品和秒杀商品相关东西&#10;2.增加了查找商品列表&#10;3.添加了自定义用户参数判断工具类，将controller中的判断移除" />
+    <MESSAGE value="1.修改了user类中字段名错误的bug&#10;2.新增商品详情页面的秒杀功能实现&#10;3.后台增加了秒杀时间、状态的判断" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.修改了user类中字段名错误的bug&#10;2.新增商品详情页面的秒杀功能实现&#10;3.后台增加了秒杀时间、状态的判断" />
   </component>
 </project>

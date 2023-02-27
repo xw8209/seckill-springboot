@@ -24,6 +24,13 @@ public class GoodsController {
 private IUserService userService;
 @Autowired
 private IGoodsService goodsService;
+
+    /**
+     * windows 优化前 562
+     * @param model
+     * @param user
+     * @return
+     */
     @RequestMapping("/toList")
     public String toList(Model model, User user){
         if(user == null){
