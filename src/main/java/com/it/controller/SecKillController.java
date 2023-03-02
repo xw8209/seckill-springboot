@@ -27,6 +27,14 @@ public class SecKillController {
 
     @Autowired
     private IOrderService orderService;
+
+    /**
+     * 优化前QPS:444
+     * @param model
+     * @param user
+     * @param goodsId
+     * @return
+     */
     @RequestMapping("/doSeckill")
     public String doSeckill(Model model, User user, Long goodsId){
         if(user == null){

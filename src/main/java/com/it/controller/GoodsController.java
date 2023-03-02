@@ -5,6 +5,8 @@ import com.it.service.IGoodsService;
 import com.it.service.IUserService;
 import com.it.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -25,20 +27,29 @@ private IUserService userService;
 @Autowired
 private IGoodsService goodsService;
 
+@Autowired
+private RedisTemplate redisTemplate;
     /**
      * windows 优化前 562
      * @param model
      * @param user
      * @return
      */
-    @RequestMapping("/toList")
+    @RequestMapping(value = "/toList",produces = "text/html;charset = utf-8")
     public String toList(Model model, User user){
-        if(user == null){
-            return "login";
+        //Redis中获取页面
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        String html = (String) valueOperations.get("goodsList");
+        if(!StringUtils.isEmpty(html)){
+            return html;
         }
+//        if(user == null){
+//            return "login";
+//        }
         model.addAttribute("user",user);
         model.addAttribute("goodsList",goodsService.findGoodVo());
-        return "goodsList";
+        //return "goodsList";
+        return null;
     }
 
     /**

@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eb72f23-82c6-4a33-88f5-97d7d741afd9" name="变更" comment="1.修改了user类中字段名错误的bug&#10;2.新增商品详情页面的秒杀功能实现&#10;3.后台增加了秒杀时间、状态的判断">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/SecKillController.java" afterDir="false" />
+    <list default="true" id="7eb72f23-82c6-4a33-88f5-97d7d741afd9" name="变更" comment="1.添加了自动生成用户的工具类&#10;2.压测商品列表">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/utils/UserUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/GoodsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/IOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/vo/RespBeanEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/vo/RespBeanEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secKillFail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/seckillFail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/SecKillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/SecKillController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/vo/RespBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/vo/RespBean.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -90,9 +88,22 @@
       <recent name="E:\code\JAVA_code\springboot" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.SeckillSpringbootApplication">
+  <component name="RunManager" selected="应用程序.UserUtil">
     <configuration name="MD5Util" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.it.utils.MD5Util" />
+      <module name="seckill-springboot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.it.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.it.utils.UserUtil" />
       <module name="seckill-springboot" />
       <extension name="coverage">
         <pattern>
@@ -116,6 +127,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.UserUtil" />
         <item itemvalue="应用程序.MD5Util" />
       </list>
     </recent_temporary>
@@ -142,7 +154,9 @@
       <workItem from="1670507531560" duration="2132000" />
       <workItem from="1677152575646" duration="7987000" />
       <workItem from="1677243025935" duration="5242000" />
-      <workItem from="1677499272430" duration="4192000" />
+      <workItem from="1677499272430" duration="4412000" />
+      <workItem from="1677597459146" duration="764000" />
+      <workItem from="1677758721580" duration="8152000" />
     </task>
     <task id="LOCAL-00001" summary="增加2次MD5加密">
       <created>1668785840807</created>
@@ -200,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677160327327</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1.添加了秒杀功能&#10;2.添加了压测接口">
+      <created>1677511226603</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1677511226603</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +248,8 @@
     <MESSAGE value="1.配置了redis&#10;2.将用户信息存进了redis,取代了session" />
     <MESSAGE value="1.增加了商品和秒杀商品相关东西&#10;2.增加了查找商品列表&#10;3.添加了自定义用户参数判断工具类，将controller中的判断移除" />
     <MESSAGE value="1.修改了user类中字段名错误的bug&#10;2.新增商品详情页面的秒杀功能实现&#10;3.后台增加了秒杀时间、状态的判断" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.修改了user类中字段名错误的bug&#10;2.新增商品详情页面的秒杀功能实现&#10;3.后台增加了秒杀时间、状态的判断" />
+    <MESSAGE value="1.添加了秒杀功能&#10;2.添加了压测接口" />
+    <MESSAGE value="1.添加了自动生成用户的工具类&#10;2.压测商品列表" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.添加了自动生成用户的工具类&#10;2.压测商品列表" />
   </component>
 </project>

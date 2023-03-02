@@ -55,11 +55,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 //        }
         //根据手机号获取用户
         User user = new User();
-        try {
             user = userMapper.selectById(mobile);  
-        }catch (Exception e){
-            System.out.println(e);
-        }
+
         
         if(user == null) {
             throw new GlobalException(RespBeanEnum.LOGIN_ERROR);
@@ -74,7 +71,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         redisTemplate.opsForValue().set("user:" + ticket,user);
         //request.getSession().setAttribute(ticket,user);
         CookieUtil.setCookie(request,response,"userTicket",ticket);
-        return RespBean.success(RespBeanEnum.SUCCESS);
+        return RespBean.success(ticket);
     }
 
     /**
