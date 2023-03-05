@@ -3,7 +3,9 @@ package com.it.controller;
 import com.it.pojo.User;
 import com.it.service.IGoodsService;
 import com.it.service.IUserService;
+import com.it.vo.DetailVo;
 import com.it.vo.GoodsVo;
+import com.it.vo.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -13,6 +15,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
@@ -37,12 +40,14 @@ private RedisTemplate redisTemplate;
 private ThymeleafViewResolver viewResolver;
 
     /**
-     * windows 优化前 562
+     * windows 优化前QPS 562
+     *         缓存QPS   890
      * @param model
      * @param user
      * @return
      */
     @RequestMapping(value = "/toList",produces = "text/html;charset = utf-8")
+    @ResponseBody
     public String toList(Model model, User user, HttpServletRequest request, HttpServletResponse response){
         //Redis中获取页面
         ValueOperations valueOperations = redisTemplate.opsForValue();
@@ -70,19 +75,13 @@ private ThymeleafViewResolver viewResolver;
 
     /**
      * 跳转到商品列表页面
-     * @param model
      * @param user
      * @return
      */
-    @RequestMapping(value ="/toDetail/{goodsId}", produces = "text/html;charset=utf-8")
-    public String toDetail(Model model, User user, @PathVariable Long goodsId, HttpServletRequest request, HttpServletResponse response){
-        //redis中获取页面
-        ValueOperations valueOperations = redisTemplate.opsForValue();
-        String html = (String) valueOperations.get("goodsDetail:" + goodsId);
-        if(!StringUtils.isEmpty(html)) {
-            return html;
-        }
-        model.addAttribute("user",user);
+    @RequestMapping("/detail/{goodsId}")
+    @ResponseBody
+    public RespBean toDetail(User user, @PathVariable Long goodsId){
+
         GoodsVo goodsVo = goodsService.findGoodVoByGoodsId(goodsId);
         Date startDate = goodsVo.getStartDate();
         Date endDate = goodsVo.getEndDate();
@@ -102,15 +101,12 @@ private ThymeleafViewResolver viewResolver;
             secKillStatus = 1;
             remainSeconds = 0;
         }
+        DetailVo detailVo = new DetailVo();
+        detailVo.setUser(user);
+        detailVo.setGoodsVo(goodsVo);
+        detailVo.setSecKillStatus(secKillStatus);
+        detailVo.setRemainSeconds(remainSeconds);
 
-        model.addAttribute("goods",goodsVo);
-        model.addAttribute("secKillStatus",secKillStatus);
-        model.addAttribute("remainSeconds",remainSeconds);
-        WebContext webContext = new WebContext(request, response, request.getServletContext(), request.getLocale(),model.asMap());
-        String newHtml = viewResolver.getTemplateEngine().process("goodsDetail", webContext);
-        if(!StringUtils.isEmpty(newHtml)) {
-            valueOperations.set("goodsDetail:"+goodsId, newHtml, 60, TimeUnit.SECONDS);
-        }
-        return newHtml;
+        return RespBean.success(detailVo);
     }
 }

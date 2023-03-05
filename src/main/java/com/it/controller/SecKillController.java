@@ -9,11 +9,14 @@ import com.it.service.IGoodsService;
 import com.it.service.IOrderService;
 import com.it.service.ISeckillOrderService;
 import com.it.vo.GoodsVo;
+import com.it.vo.RespBean;
 import com.it.vo.RespBeanEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/seckill")
@@ -35,7 +38,7 @@ public class SecKillController {
      * @param goodsId
      * @return
      */
-    @RequestMapping("/doSeckill")
+    @RequestMapping("/doSeckill2")
     public String doSeckill(Model model, User user, Long goodsId){
         if(user == null){
             return "login";
@@ -57,5 +60,26 @@ public class SecKillController {
         model.addAttribute("order",order);
         model.addAttribute("goods",goods);
         return "orderDetail";
+    }
+
+    @RequestMapping(value = "/doSeckill",method = RequestMethod.POST)
+    @ResponseBody
+    public RespBean doSeckill(User user, Long goodsId){
+        if(user == null){
+            return RespBean.error(RespBeanEnum.SESSION_ERROR);
+        }
+        GoodsVo goods = goodsService.findGoodVoByGoodsId(goodsId);
+        //判断库存
+        if(goods.getGoodsStock() < 1){
+
+            return RespBean.error(RespBeanEnum.EMPTY_STOCK);
+        }
+        //判断是否重复抢购
+        SeckillOrder seckillOrder = seckillOrderService.getOne(new QueryWrapper<SeckillOrder>().eq("user_id", user.getId()).eq("goods_id", goodsId));
+        if(seckillOrder != null){
+            return RespBean.error(RespBeanEnum.REPEAT_ERROR);
+        }
+        Order order = orderService.seckill(user,goods);
+        return RespBean.success(order);
     }
 }

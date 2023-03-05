@@ -7,10 +7,12 @@ import com.it.pojo.Order;
 import com.it.pojo.SeckillGoods;
 import com.it.pojo.SeckillOrder;
 import com.it.pojo.User;
+import com.it.service.IGoodsService;
 import com.it.service.IOrderService;
 import com.it.service.ISeckillGoodsService;
 import com.it.service.ISeckillOrderService;
 import com.it.vo.GoodsVo;
+import com.it.vo.OrderDetailVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     private OrderMapper orderMapper;
     @Autowired
     private ISeckillOrderService seckillOrderService;
+
+    @Autowired
+    private IGoodsService goodsService;
     @Override
     public Order seckill(User user, GoodsVo goods) {
         //秒杀商品减库存
@@ -57,5 +62,17 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         seckillOrder.setGoodsId(goods.getId());
         seckillOrderService.save(seckillOrder);
         return order;
+    }
+
+    @Override
+    public OrderDetailVo getDetail(Long orderId) {
+        Order order = baseMapper.selectById(orderId);
+        Long goodsId = order.getGoodsId();
+        GoodsVo goodsVo = goodsService.findGoodVoByGoodsId(goodsId);
+        OrderDetailVo detail = new OrderDetailVo();
+        detail.setOrder(order);
+        detail.setGoodsVo(goodsVo);
+        return detail;
+
     }
 }

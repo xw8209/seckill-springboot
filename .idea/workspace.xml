@@ -4,9 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eb72f23-82c6-4a33-88f5-97d7d741afd9" name="变更" comment="1.添加了自动生成用户的工具类&#10;2.压测商品列表">
+    <list default="true" id="7eb72f23-82c6-4a33-88f5-97d7d741afd9" name="变更" comment="1.添加了商品列表和商品详情的缓存">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/vo/DetailVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/vo/OrderDetailVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/goodsDetail.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/orderDetail.htm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/SecKillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/SecKillController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/IOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/vo/RespBeanEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/vo/RespBeanEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/goodsList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/goodsList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/orderDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/orderDetail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +69,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/code/JAVA_code/springboot/seckill-springboot/src/main/resources/static/img&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/code/JAVA_code/springboot/seckill-springboot/src/main/resources/static&quot;,
     &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -74,17 +88,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\code\JAVA_code\springboot\seckill-springboot\src\main\resources\static" />
       <recent name="E:\code\JAVA_code\springboot\seckill-springboot\src\main\resources\static\img" />
       <recent name="E:\code\JAVA_code\springboot\seckill-springboot\src\main\resources\mapper" />
       <recent name="E:\code\JAVA_code\springboot\seckill-springboot\src\main\java\com\it" />
       <recent name="E:\code\JAVA_code\springboot\seckill-springboot\src\main\java\com\it\utils" />
-      <recent name="E:\code\JAVA_code\springboot\seckill-springboot\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\code\JAVA_code\springboot" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.UserUtil">
+  <component name="RunManager" selected="Spring Boot.SeckillSpringbootApplication">
     <configuration name="MD5Util" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.it.utils.MD5Util" />
       <module name="seckill-springboot" />
@@ -152,7 +166,9 @@
       <workItem from="1677243025935" duration="5242000" />
       <workItem from="1677499272430" duration="4412000" />
       <workItem from="1677597459146" duration="764000" />
-      <workItem from="1677758721580" duration="8999000" />
+      <workItem from="1677758721580" duration="9054000" />
+      <workItem from="1677843312850" duration="9747000" />
+      <workItem from="1678015487761" duration="5774000" />
     </task>
     <task id="LOCAL-00001" summary="增加2次MD5加密">
       <created>1668785840807</created>
@@ -224,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677767275493</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="1.添加了商品列表和商品详情的缓存">
+      <created>1677768162475</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1677768162475</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +276,7 @@
     <MESSAGE value="1.修改了user类中字段名错误的bug&#10;2.新增商品详情页面的秒杀功能实现&#10;3.后台增加了秒杀时间、状态的判断" />
     <MESSAGE value="1.添加了秒杀功能&#10;2.添加了压测接口" />
     <MESSAGE value="1.添加了自动生成用户的工具类&#10;2.压测商品列表" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.添加了自动生成用户的工具类&#10;2.压测商品列表" />
+    <MESSAGE value="1.添加了商品列表和商品详情的缓存" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.添加了商品列表和商品详情的缓存" />
   </component>
 </project>
