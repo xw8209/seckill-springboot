@@ -88,7 +88,7 @@ public class SecKillController implements InitializingBean {
         }
         //通过内存标记减少redis访问
         if(EmptyStockMap.get(goodsId)){
-            return RespBean.error(RespBeanEnum.REPEAT_ERROR)
+            return RespBean.error(RespBeanEnum.REPEAT_ERROR);
         }
         ValueOperations valueOperations = redisTemplate.opsForValue();
         //判断是否重复抢购
@@ -119,6 +119,26 @@ public class SecKillController implements InitializingBean {
 //        Order order = orderService.seckill(user,goods);
 //        return RespBean.success(order);
     }
+
+    /**
+     * 获取秒杀结果
+     * return：orderId：成功 -1：失败： 0：排队中
+     * @param user
+     * @param goodsId
+     * @return
+     */
+    @RequestMapping(value = "/result",method = RequestMethod.GET)
+    @ResponseBody
+    public RespBean getResult(User user,Long goodsId){
+        if(user == null){
+            return RespBean.error(RespBeanEnum.SESSION_ERROR);
+        }
+        Long orderId = seckillOrderService.getResult(user,goodsId);
+        return RespBean.success(orderId);
+    }
+
+
+
 
     /**
      * 初始化,减库存就可以绕过数据库，直接在redis上操作

@@ -2,6 +2,7 @@ package com.it.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.it.pojo.SeckillOrder;
+import com.it.pojo.User;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.it.pojo.SeckillOrder;
  */
 public interface ISeckillOrderService extends IService<SeckillOrder> {
 
+    Long getResult(User user, Long goodsId);
 }

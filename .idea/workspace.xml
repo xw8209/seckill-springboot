@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="7eb72f23-82c6-4a33-88f5-97d7d741afd9" name="变更" comment="1.添加了内存标记减少redis访问&#10;2.实现了rabbitMQ秒杀操作">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/SecKillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/SecKillController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/rabbitmq/MQReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/rabbitmq/MQReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/rabbitmq/MQSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/rabbitmq/MQSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/ISeckillOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/ISeckillOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/service/impl/SeckillOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/service/impl/SeckillOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/goodsDetail.htm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/goodsDetail.htm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +165,7 @@
       <workItem from="1678015487761" duration="6484000" />
       <workItem from="1678072766411" duration="1472000" />
       <workItem from="1678091073804" duration="13373000" />
-      <workItem from="1678255596517" duration="294000" />
+      <workItem from="1678255596517" duration="6643000" />
     </task>
     <task id="LOCAL-00001" summary="增加2次MD5加密">
       <created>1668785840807</created>
@@ -256,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678112715902</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="1.添加了内存标记减少redis访问&#10;2.实现了rabbitMQ秒杀操作">
+      <created>1678255991913</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1678255991913</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,6 +297,7 @@
     <MESSAGE value="1.添加了商品列表和商品详情的缓存" />
     <MESSAGE value="1.添加了一些页面的静态化" />
     <MESSAGE value="1.添加了RabbitMQ接口&#10;2.增加了redis预减库存的功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.添加了RabbitMQ接口&#10;2.增加了redis预减库存的功能" />
+    <MESSAGE value="1.添加了内存标记减少redis访问&#10;2.实现了rabbitMQ秒杀操作" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.添加了内存标记减少redis访问&#10;2.实现了rabbitMQ秒杀操作" />
   </component>
 </project>

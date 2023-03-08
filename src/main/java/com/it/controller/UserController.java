@@ -33,9 +33,9 @@ public class UserController {
     /**
      * 厕所是发送RabbitMQ 消息
      */
-    @RequestMapping("/mq")
-    @ResponseBody
-    public void mq(){
-       mqSender.send("hello");
-    }
+//    @RequestMapping("/mq")
+//    @ResponseBody
+//    public void mq(){
+//       mqSender.send("hello");
+//    }
 }
