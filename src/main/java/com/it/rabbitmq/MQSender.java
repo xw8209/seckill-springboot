@@ -16,10 +16,10 @@ public class MQSender {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    public void send(Object msg) {
-        log.info("发送消息：" + msg);
-        rabbitTemplate.convertAndSend("fanoutExchange", "", msg);
-    }
+//    public void send(Object msg) {
+//        log.info("发送消息：" + msg);
+//        rabbitTemplate.convertAndSend("fanoutExchange", "", msg);
+//    }
 
 //    public void send01(Object msg) {
 //        log.info("发送red消息：" + msg);

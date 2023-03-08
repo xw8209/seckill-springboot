@@ -1,6 +1,8 @@
 package com.it.rabbitmq;
 
 
+import com.alibaba.fastjson.JSON;
+import com.it.pojo.SeckillMessage;
 import com.it.pojo.SeckillOrder;
 import com.it.pojo.User;
 import com.it.service.IGoodsService;
@@ -24,16 +26,16 @@ public class MQReceiver {
 //    public void receive(Object msg) {
 //        log.info("接收消息：" + msg);
 //    }
-
-    @RabbitListener(queues = "queue_fanout01")
-    public void receive01(Object msg) {
-        log.info("QUEUE01接收消息：" + msg);
-    }
-
-    @RabbitListener(queues = "queue_fanout02")
-    public void receive02(Object msg) {
-        log.info("QUEUE02接收消息：" + msg);
-    }
+//
+//    @RabbitListener(queues = "queue_fanout01")
+//    public void receive01(Object msg) {
+//        log.info("QUEUE01接收消息：" + msg);
+//    }
+//
+//    @RabbitListener(queues = "queue_fanout02")
+//    public void receive02(Object msg) {
+//        log.info("QUEUE02接收消息：" + msg);
+//    }
 
 //    @RabbitListener(queues = "queue_direct01")
 //    public void receive03(Object msg) {
@@ -74,32 +76,32 @@ public class MQReceiver {
     @Autowired
     private IOrderService orderService;
 
-//    //进行下单
-//    @RabbitListener(queues = "seckillQueue")
-//    public void receive(String message) {
-//        log.info("接收到订单消息:",message);
-//        SeckillMessage seckillMessage = JSON.parseObject(message, SeckillMessage.class);
-//        Long goodsId = seckillMessage.getGoodsId();
-//        User user = seckillMessage.getUser();
-//
-//        GoodsVo goodsVo = goodsService.getGoodsVoById(goodsId);
-//        if(goodsVo.getStockCount() < 1) {
-//            return ;
-//        }
-//        ValueOperations valueOperations = redisTemplate.opsForValue();
-//        SeckillOrder seckillOrder = (SeckillOrder)valueOperations.get("order:"+user.getId()+":"+goodsId);
-//        if(seckillOrder != null) {
-//            return ;
-//        }
-//
-//        //下单操作
-//        try {
-//            orderService.seckill(user, goodsVo);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            return ;
-//        }
-//
-//    }
+    //进行下单
+    @RabbitListener(queues = "seckillQueue")
+    public void receive(String message) {
+        log.info("接收到订单消息:",message);
+        SeckillMessage seckillMessage = JSON.parseObject(message, SeckillMessage.class);
+        Long goodsId = seckillMessage.getGoodsId();
+        User user = seckillMessage.getUser();
+
+        GoodsVo goodsVo = goodsService.findGoodVoByGoodsId(goodsId);
+        if(goodsVo.getStockCount() < 1) {
+            return ;
+        }
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        SeckillOrder seckillOrder = (SeckillOrder)valueOperations.get("order:"+user.getId()+":"+goodsId);
+        if(seckillOrder != null) {
+            return ;
+        }
+
+        //下单操作
+        try {
+            orderService.seckill(user, goodsVo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return ;
+        }
+
+    }
 }
