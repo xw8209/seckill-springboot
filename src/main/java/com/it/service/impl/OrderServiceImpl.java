@@ -1,9 +1,7 @@
 package com.it.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.extension.conditions.update.UpdateChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.it.mapper.OrderMapper;
 import com.it.pojo.Order;
@@ -14,14 +12,18 @@ import com.it.service.IGoodsService;
 import com.it.service.IOrderService;
 import com.it.service.ISeckillGoodsService;
 import com.it.service.ISeckillOrderService;
+import com.it.utils.MD5Util;
+import com.it.utils.UUIDUtil;
 import com.it.vo.GoodsVo;
 import com.it.vo.OrderDetailVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -91,5 +93,28 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         detail.setGoodsVo(goodsVo);
         return detail;
 
+    }
+
+    /**
+     * 获取秒杀地址
+     * @param user
+     * @param goodsId
+     * @return
+     */
+    @Override
+    public String createPath(User user, Long goodsId) {
+        String str = MD5Util.md5(UUIDUtil.uuid() + "123456");
+        redisTemplate.opsForValue().set("seckillPath:" + user.getId() + ":" + goodsId,str,60, TimeUnit.SECONDS);
+        return str;
+    }
+
+    @Override
+    public boolean checkPath(User user, Long goodsId, String path) {
+        if(user == null || StringUtils.isEmpty(path)){
+            return false;
+        }
+        String redisPath = (String) redisTemplate.opsForValue().get("seckillPath:" + user.getId() + ":" + goodsId);
+        System.out.println(redisPath+","+path);
+        return path.equals(redisPath);
     }
 }

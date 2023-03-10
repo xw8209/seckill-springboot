@@ -31,11 +31,11 @@ public class UserController {
     }
 
     /**
-     * 厕所是发送RabbitMQ 消息
+     * 测试是发送RabbitMQ 消息
      */
-//    @RequestMapping("/mq")
+//    @RequestMapping("/mq/topic")
 //    @ResponseBody
 //    public void mq(){
-//       mqSender.send("hello");
+//       mqSender.send04("hello,green");
 //    }
 }

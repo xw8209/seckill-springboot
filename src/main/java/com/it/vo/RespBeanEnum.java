@@ -22,6 +22,8 @@ public enum RespBeanEnum {
     //秒杀模块
     EMPTY_STOCK(500500,"空库存"),
     REPEAT_ERROR(500501,"每人限购一件"),
+    PATH_ERROR(500502,"获取秒杀路径错误"),
+    ACCESS_ERROR(500503,"访问过于频繁" ),
     //订单模块
     ORDER_NOT_EXIST(500300,"订单不存在"),
 
